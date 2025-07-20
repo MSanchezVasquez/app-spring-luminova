@@ -1,0 +1,44 @@
+.contenedor-monturas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.contenedor-monturas > div {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.contenedor-monturas > div:hover {
+  transform: translateY(-5px);
+}
+
+.contenedor-monturas img {
+  width: 100%;
+  max-height: 180px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.contenedor-monturas h5 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.contenedor-monturas p {
+  margin: 0.25rem 0;
+}
+
+.contenedor-monturas .btn {
+  margin-top: 0.75rem;
+}

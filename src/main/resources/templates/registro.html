@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Registro</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" th:href="@{/css/registro.css}" />
+  </head>
+  <body>
+    <a href="/" class="home-link">
+      <i class="bx bxs-home"></i>
+      <!-- Icono de la casa -->
+    </a>
+    <form th:action="@{/registro}" th:object="${registerDTO}" method="post">
+      <h1>Registration</h1>
+      <div class="input-box">
+        <input type="text" placeholder="Username" th:field="*{nombre}" />
+        <i class="bx bxs-user"></i>
+      </div>
+      <span
+        th:if="${#fields.hasErrors('nombre')}"
+        th:errors="*{nombre}"
+        class="error"
+      ></span>
+      <div class="input-box">
+        <input
+          type="email"
+          placeholder="Email"
+          required=""
+          th:field="*{email}"
+        />
+        <i class="bx bxs-envelope"></i>
+      </div>
+      <span
+        th:if="${#fields.hasErrors('email')}"
+        th:errors="*{email}"
+        class="error"
+      ></span>
+      <div class="input-box">
+        <input
+          type="password"
+          placeholder="Password"
+          required=""
+          th:field="*{password}"
+        />
+        <i class="bx bxs-lock-alt"></i>
+      </div>
+      <span
+        th:if="${#fields.hasErrors('password')}"
+        th:errors="*{password}"
+        class="error"
+      ></span>
+      <button type="submit" class="btn">Register</button>
+      <p>or register with social platforms</p>
+      <div class="social-icons">
+        <a href="#"><i class="bx bxl-google"></i></a>
+        <a href="#"><i class="bx bxl-facebook"></i></a>
+        <a href="#"><i class="bx bxl-github"></i></a>
+        <a href="#"><i class="bx bxl-linkedin"></i></a>
+      </div>
+      <div th:if="${param.exito}" class="success-message">
+        ¡Registro exitoso!
+      </div>
+      <p>¿Ya tienes cuenta? <a th:href="@{/login}">Inicia sesión aquí</a></p>
+    </form>
+
+    <script src="../static/js/registro.js"></script>
+  </body>
+</html>

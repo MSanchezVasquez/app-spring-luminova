@@ -1,0 +1,249 @@
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.close-button {
+  float: right;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Estilos globales */
+* {
+  box-sizing: border-box; /* Modelo de caja. */
+  margin: 0; /* Sin margen. */
+  padding: 0; /* Sin padding. */
+  font-family: Arial, sans-serif; /* Fuente Arial o sans-serif. */
+}
+.logo-img {
+  width: 200px;
+  height: auto;
+}
+/* Encabezado de agendar cita*/
+.header {
+  background-image: url("../images/font.jpg"); /* Imagen de fondo. */
+  background-size: cover; /* Cubre todo el contenedor. */
+  background-repeat: no-repeat; /* No se repite. */
+  background-position: center; /* Centrada. */
+  color: var(--AzulOscuro); /* Color de texto. */
+  text-align: center; /* Texto centrado. */
+  padding: 200px 0; /* Relleno vertical de 70px. */
+  position: relative; /* Posición relativa. */
+}
+
+.header h1 {
+  font-size: 2.5em; /* Tamaño de fuente del título. */
+  margin-bottom: 10px; /* Margen inferior. */
+}
+
+.header p {
+  font-size: 1em; /* Tamaño de fuente del párrafo. */
+  opacity: 0.8; /* Transparencia del texto. */
+}
+
+/* Estilo de Botones Home - Contact */
+.breadcrumb {
+  font-size: 1.3em; /* Tamaño de fuente. */
+  margin-top: 10px; /* Margen superior. */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.breadcrumb a {
+  color: var(--blanco); /* Color de texto. */
+  text-decoration: none; /* Sin subrayado. */
+  padding: 5px 10px; /* Relleno interno. */
+  background-color: var(--Amarillo); /* Fondo de botón. */
+  border-radius: 5px; /* Esquinas redondeadas. */
+  transition: background-color 0.3s; /* Transición de color. */
+  text-align: center;
+  margin: 1rem;
+}
+
+.breadcrumb a:hover {
+  background-color: var(--Celeste); /* Color al hover. */
+}
+
+/* Contenedor Principal */
+.contact-container {
+  display: flex; /* Usa flexbox para el diseño. */
+  justify-content: space-between; /* Espacio entre las columnas. */
+  padding: 20px; /* Relleno de 20px alrededor. */
+  gap: 20px; /* Espacio de 20px entre los elementos. */
+  width: 100%; /* Asegura que ocupe todo el ancho disponible. */
+  max-width: 1200px; /* Ancho máximo para evitar que se amplíe más allá de 1200px. */
+  margin: 0 auto; /* Centra el contenedor en la página. */
+  box-sizing: border-box; /* Incluye el padding en el tamaño total del contenedor. */
+}
+
+/* Estilos de la Columna del Formulario */
+.contact-form {
+  flex: 2; /* Ocupa el doble de espacio que el contenedor. */
+  max-width: 600px; /* Limita el ancho máximo a 600px. */
+  width: 100%; /* Ancho completo dentro del contenedor, pero con el límite de max-width. */
+}
+
+/* Estilos para los inputs y textareas del formulario */
+.contact-form input,
+.contact-form textarea {
+  width: 100%; /* Ancho completo del contenedor. */
+  padding: 10px; /* Relleno de 10px. */
+  margin-bottom: 15px; /* Espacio inferior de 15px. */
+  border: 1px solid var(--Celeste); /* Borde con color celeste. */
+  border-radius: 5px; /* Bordes redondeados de 5px. */
+}
+
+/* Estilos para los labels */
+.contact-form label {
+  font-size: 0.9em; /* Tamaño de fuente pequeño. */
+  margin-bottom: 5px; /* Espacio inferior de 5px. */
+  display: block; /* Muestra el label en bloque. */
+  color: var(--Black); /* Color del texto. */
+}
+
+/* Estilos para los términos */
+.contact-form .terms {
+  display: flex; /* Usa flexbox para los elementos internos. */
+  align-items: center; /* Alinea verticalmente. */
+  font-size: 0.9em; /* Tamaño de fuente pequeño. */
+  margin: 15px 0 20px 0; /* Espacio inferior de 15px. */
+}
+
+.contact-form .terms .checkbox {
+  background-color: #2956b2;
+  padding: 20px;
+  width: 15%;
+}
+
+/* Estilos para el botón */
+.contact-form .buttonForm {
+  background-color: var(--Amarillo); /* Fondo amarillo. */
+  color: var(--blanco); /* Color del texto blanco. */
+  border: none; /* Sin borde. */
+  padding: 10px 20px; /* Relleno de 10px arriba y abajo, 20px a los lados. */
+  font-size: 1em; /* Tamaño de fuente estándar. */
+  border-radius: 5px; /* Bordes redondeados de 5px. */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón. */
+  display: block;
+  margin: 0 auto;
+  width: 70%;
+}
+
+.contact-form .buttonForm:hover {
+  background-color: var(
+    --AzulOscuro
+  ); /* Fondo azul oscuro al pasar el mouse. */
+}
+
+/* Estilos para la Columna de Información de Contacto */
+.contact-info {
+  flex: 1; /* Ocupa el espacio restante en un contenedor flex. */
+  background-color: var(--AzulOscuro); /* Fondo azul oscuro. */
+  color: var(--CelesteClaro); /* Texto en azul claro. */
+  padding: 20px; /* Relleno interno de 20px. */
+  border-radius: 10px; /* Bordes redondeados. */
+  max-height: 500px; /* Limita la altura. */
+  width: 100%; /* Ocupa todo el ancho disponible. */
+  max-width: 500px; /* Ancho máximo de 500px. */
+  overflow: auto; /* Barra de desplazamiento si el contenido excede. */
+  box-sizing: border-box; /* Incluye el padding y borde en las dimensiones. */
+}
+
+/* Estilos para cada ítem de contacto */
+.contact-item {
+  display: flex; /* Alinea los elementos en fila. */
+  align-items: center; /* Centra verticalmente el ícono y el texto. */
+  justify-content: center; /* Centra los elementos horizontalmente dentro del contenedor. */
+  margin-bottom: 15px; /* Espacio entre cada ítem. */
+}
+
+.contact-item i {
+  font-size: 1.7em; /* Tamaño del ícono. */
+  margin-right: 15px; /* Espacio entre el ícono y el texto. */
+}
+
+.contact-info h3 {
+  margin-top: 20px; /* Espacio superior para el encabezado. */
+  font-size: 1.2em; /* Tamaño de fuente del encabezado. */
+}
+
+.contact-info p {
+  margin: 5px 0; /* Espacio arriba y abajo del párrafo. */
+  font-size: 1em; /* Tamaño de fuente del encabezado. */
+}
+
+/* Barra de Redes Sociales */
+.social-bar {
+  display: flex; /* Usa flexbox para el diseño. */
+  justify-content: center; /* Centra los elementos horizontalmente. */
+  background-color: var(--Celeste); /* Fondo azul claro. */
+  padding: 10px 0; /* Relleno de 10px arriba y abajo. */
+}
+
+.social-icon {
+  display: flex; /* Usa flexbox para el diseño. */
+  align-items: center; /* Alinea el contenido verticalmente. */
+  justify-content: center; /* Centra el contenido horizontalmente. */
+  width: 100%; /* Ancho completo del contenedor. */
+  height: 60px; /* Altura fija de 60px. */
+  margin: 0 7px; /* Márgenes laterales de 7px. */
+  color: var(--blanco); /* Color del texto. */
+  font-size: 25px; /* Tamaño de fuente de 25px. */
+  background-color: var(--Azul); /* Color de fondo. */
+  border: 2px solid var(--AzulOscuro); /* Borde con color oscuro. */
+  border-radius: 5px; /* Esquinas redondeadas. */
+  transition: all 0.3s ease; /* Transición suave de 0.3 segundos. */
+  text-decoration: none; /* Sin subrayado. */
+}
+
+.social-icon:hover {
+  background-color: var(--Amarillo); /* Fondo amarillo al pasar el mouse. */
+  color: var(--Azul); /* Color del texto al pasar el mouse. */
+  border-color: var(--AzulOscuro); /* Borde oscuro al pasar el mouse. */
+}
+
+/* Mapa */
+.map {
+  margin: 20px auto; /* Margen vertical de 20px y centrado horizontal. */
+  text-align: center; /* Centra el contenido dentro del contenedor. */
+}
+
+.map iframe {
+  border-radius: 10px; /* Esquinas redondeadas de 10px. */
+  width: 100%; /* Ancho completo del contenedor. */
+  max-width: 100%; /* Ancho máximo del iframe. */
+  height: 450px; /* Altura fija de 450px. */
+}
+
+/* Fin Contacto */

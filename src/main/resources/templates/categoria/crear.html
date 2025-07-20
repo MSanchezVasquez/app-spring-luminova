@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Crear Categoria</title>
+    <style>
+      /* Estilo global */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: hsl(250, 24%, 9%);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-image: url("https://www.transparenttextures.com/patterns/dark-matter.png");
+        background-size: cover;
+        transition: background-color 0.3s;
+      }
+
+      /* Estilo para el contenedor principal */
+      .container {
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 30px;
+        border-radius: 10px;
+        width: 350px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .container:hover {
+        transform: scale(1.05);
+      }
+
+      /* Título */
+      h1 {
+        text-align: center;
+        font-size: 28px;
+        margin-bottom: 20px;
+        color: #333;
+        font-weight: bold;
+      }
+
+      /* Estilo para los grupos de formulario */
+      .form-group {
+        margin-bottom: 15px;
+        display: flex;
+        align-items: last baseline;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      .form-group label {
+        font-size: 14px;
+        font-weight: bold;
+        color: #333;
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        transition: border-color 0.3s, transform 0.3s;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus {
+        border-color: #007bff;
+        transform: translateY(-2px);
+      }
+
+      /* Estilo para el botón */
+      button {
+        width: 100%;
+        padding: 12px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+        transform: translateY(-3px);
+      }
+
+      /* Enlace */
+      a {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        color: #007bff;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: bold;
+        transition: color 0.3s;
+      }
+
+      a:hover {
+        color: #0056b3;
+      }
+
+      /* Estilo para la ventana flotante */
+      .modal {
+        display: none; /* Oculta la ventana por defecto */
+        position: fixed;
+        z-index: 1; /* Asegura que esté encima de otros elementos */
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .modal-content {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        width: 400px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 0.5s ease-out;
+      }
+
+      /* Animación de entrada */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .modal button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .modal button:hover {
+        background-color: #0056b3;
+      }
+
+      /* Enlace flotante para cerrar la ventana */
+      .close {
+        color: #aaa;
+        font-size: 28px;
+        font-weight: bold;
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        transition: color 0.3s;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Crear Categoria</h1>
+      <form
+        th:action="@{/categoria/crear}"
+        method="post"
+        onsubmit="showModal(); return true;"
+      >
+        <div class="form-group">
+          <label for="nombre">Nombre:</label>
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            th:value="${categoria.nombre}"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <button type="submit">Crear Categoria</button>
+        </div>
+      </form>
+      <a href="/gestionar">Volver a Listar Categorias</a>
+    </div>
+
+    <!-- Ventana flotante -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal();">&times;</span>
+        <h2>Categoria Creada Exitosamente</h2>
+        <p>La categoria se ha creado correctamente.</p>
+        <button onclick="closeModal();">Cerrar</button>
+      </div>
+    </div>
+
+    <script>
+      // Mostrar ventana flotante
+      function showModal() {
+        document.getElementById("myModal").style.display = "flex";
+      }
+
+      // Cerrar ventana flotante
+      function closeModal() {
+        document.getElementById("myModal").style.display = "none";
+      }
+    </script>
+  </body>
+</html>

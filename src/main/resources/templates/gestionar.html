@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestión de Inventario</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" th:href="@{/css/gestionar.css}" />
+  </head>
+  <body>
+    <a href="/productos" class="home-link">
+      <i class="bx bxs-home"></i>
+      <!-- Icono de la casa -->
+    </a>
+    <div class="container">
+      <h1>Gestión de Inventario</h1>
+
+      <div class="actions">
+        <a th:href="@{/categoria/crear}" class="button-link">
+          Añadir Categoría
+        </a>
+        <a th:href="@{/montura/crear}" class="button-link"> Añadir Montura </a>
+      </div>
+
+      <div class="table-container">
+        <div>
+          <h2>Categorías</h2>
+          <table id="categoriasTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="categoria : ${categorias}">
+                <td th:text="${categoria.id}"></td>
+                <td th:text="${categoria.nombre}"></td>
+                <td>
+                  <a
+                    th:href="@{/categoria/editar/{id}(id=${categoria.id})}"
+                    class="action-icon edit-icon"
+                    title="Editar"
+                  >
+                    <i class="fas fa-edit"></i>
+                  </a>
+                  <a
+                    th:href="@{/categoria/eliminar/{id}(id=${categoria.id})}"
+                    onclick="return confirm('¿Estás seguro de eliminar esta categoría?')"
+                    class="action-icon delete-icon"
+                    title="Eliminar"
+                  >
+                    <i class="fas fa-trash-alt"></i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div>
+          <h2>Monturas</h2>
+          <table id="monturasTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Color</th>
+                <th>Material</th>
+                <th>Precio</th>
+                <th>Categoria</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="montura : ${monturas}">
+                <td th:text="${montura.id}"></td>
+                <td th:text="${montura.nombre}"></td>
+                <td th:text="${montura.color}"></td>
+                <td th:text="${montura.material}"></td>
+                <td th:text="${montura.precio}"></td>
+                <td th:text="${montura.categoria.nombre}"></td>
+                <td>
+                  <a
+                    th:href="@{/montura/editar/{id}(id=${montura.id})}"
+                    class="action-icon edit-icon"
+                    title="Editar"
+                  >
+                    <i class="fas fa-edit"></i>
+                  </a>
+                  <a
+                    th:href="@{/montura/eliminar/{id}(id=${montura.id})}"
+                    onclick="return confirm('¿Estás seguro de eliminar esta categoría?')"
+                    class="action-icon delete-icon"
+                    title="Eliminar"
+                  >
+                    <i class="fas fa-trash-alt"></i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Funcionalidad futura para añadir/editar/eliminar con JavaScript
+      // Por ahora, solo tenemos alertas simples.
+    </script>
+  </body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Editar Montura</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f7f6;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        animation: fadeIn 1s ease-in-out;
+      }
+
+      h1 {
+        font-size: 24px;
+        color: #333;
+        text-align: center;
+        margin-bottom: 20px;
+        transform: translateY(-20px);
+        opacity: 0;
+        animation: slideIn 0.6s forwards 0.3s;
+      }
+
+      .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 400px;
+        text-align: center;
+        transform: scale(0.95);
+        opacity: 0;
+        animation: scaleUp 0.6s forwards 0.5s;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      label {
+        font-size: 16px;
+        margin-bottom: 8px;
+        color: #555;
+        opacity: 0;
+        animation: fadeInText 0.5s forwards 1s;
+      }
+
+      input[type="text"],
+      select {
+        padding: 10px;
+        font-size: 14px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        transition: transform 0.3s;
+      }
+
+      input[type="text"]:focus,
+      select:focus {
+        transform: scale(1.05);
+        border-color: #4caf50;
+      }
+
+      button {
+        padding: 10px;
+        font-size: 16px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+      }
+
+      button:hover {
+        background-color: #45a049;
+        transform: scale(1.05);
+      }
+
+      a {
+        color: #007bff;
+        text-decoration: none;
+        font-size: 16px;
+        margin-top: 20px;
+        display: inline-block;
+        opacity: 0;
+        animation: fadeInText 0.5s forwards 1.5s;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      /* Animaciones */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateY(-20px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes scaleUp {
+        from {
+          transform: scale(0.95);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeInText {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Editar Montura</h1>
+      <form th:action="@{/montura/crear}" method="post" th:object="${montura}">
+        <input type="hidden" th:field="*{id}" />
+
+        <div>
+          <label for="nombre">Nombre:</label>
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            th:field="*{nombre}"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="color">Color:</label>
+          <input
+            type="text"
+            id="color"
+            name="color"
+            th:field="*{color}"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="material">Material:</label>
+          <input
+            type="text"
+            id="material"
+            name="material"
+            th:field="*{material}"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="precio">Precio:</label>
+          <input
+            type="text"
+            id="precio"
+            name="precio"
+            th:field="*{precio}"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="url">URL:</label>
+          <input type="text" id="url" name="url" th:field="*{url}" required />
+        </div>
+
+        <div>
+          <label for="categoria">Categoría:</label>
+          <select id="categoria" name="categoriaId" required>
+            <option
+              th:each="categoria : ${categorias}"
+              th:value="${categoria.id}"
+              th:text="${categoria.nombre}"
+              th:selected="${categoria.id == montura.categoria.id}"
+            ></option>
+          </select>
+        </div>
+
+        <div>
+          <button type="submit">Actualizar Montura</button>
+        </div>
+      </form>
+      <br />
+      <a href="/gestionar">Volver a Listar Monturas</a>
+    </div>
+  </body>
+</html>

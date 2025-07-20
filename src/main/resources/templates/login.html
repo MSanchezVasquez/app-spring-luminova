@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Login</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" th:href="@{/css/registro.css}" />
+  </head>
+  <body>
+    <a href="/" class="home-link">
+      <i class="bx bxs-home"></i>
+    </a>
+
+    <form th:action="@{/login}" method="post">
+      <h1>Iniciar Sesión</h1>
+
+      <div class="input-box">
+        <input type="text" name="username" placeholder="Correo Electronico" required />
+        <i class="bx bxs-user"></i>
+      </div>
+
+      <div class="input-box">
+        <input type="password" name="password" placeholder="Contraseña" required />
+        <i class="bx bxs-lock-alt"></i>
+      </div>
+
+      <button type="submit" class="btn">Iniciar Sesión</button>
+
+      <p>O inicia sesión con redes sociales</p>
+      <div class="social-icons">
+        <a href="#"><i class="bx bxl-google"></i></a>
+        <a href="#"><i class="bx bxl-facebook"></i></a>
+        <a href="#"><i class="bx bxl-github"></i></a>
+        <a href="#"><i class="bx bxl-linkedin"></i></a>
+      </div>
+
+      <p>¿No tienes cuenta? <a th:href="@{/registro}">Regístrate aquí</a></p>
+      
+      <div th:if="${param.error}" class="error">
+        Usuario o contraseña incorrectos
+      </div>
+
+      <div th:if="${param.logout}" class="success-message">
+        Has cerrado sesión exitosamente
+      </div>
+    </form>
+  </body>
+</html>
