@@ -36,7 +36,7 @@
       class="navbar navbar-expand-lg navbar-light bg-light fixed-top py-3 shadow-sm"
     >
       <div class="container">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" href="/" disabled="true">
           <img
             src="images/logo.png"
             alt="Logo Óptica Luminova"
@@ -59,13 +59,13 @@
           id="navbarLuminova"
         >
           <ul class="navbar-nav gap-3">
-            <li class="nav-item">
+            <li class="nav-item" sec:authorize="hasRole('USER')">
               <a class="nav-link active" href="/">Inicio</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" sec:authorize="hasRole('USER')">
               <a class="nav-link" href="/horarios">Horarios</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" sec:authorize="hasRole('ADMIN')">
               <a class="nav-link" href="/productos">Productos</a>
             </li>
             <!-- Mostrar según el estado de autenticación -->
